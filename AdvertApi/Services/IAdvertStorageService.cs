@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace AdvertApi.Services
 {
-    interface IAdvertStorageService
+    public interface IAdvertStorageService
     {
         Task<string> Add(AdvertModel model);
         Task Confirm(ConfirmAdvertModel model);
