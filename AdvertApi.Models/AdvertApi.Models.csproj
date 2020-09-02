@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>Prayag</Authors>
+    <Company>None</Company>
+    <Product>Web Advert Microservices</Product>
+    <PackageProjectUrl>https://github.com/dedaniyaprayag/WebAdvert.AdvertApi</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/dedaniyaprayag/WebAdvert.AdvertApi</RepositoryUrl>
   </PropertyGroup>
 
 </Project>

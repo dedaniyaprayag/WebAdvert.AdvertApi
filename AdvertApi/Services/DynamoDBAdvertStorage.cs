@@ -27,6 +27,14 @@ namespace AdvertApi.Services
             return dbModel.Id;
         }
 
+        public async Task<bool> CheckHealthAsync()
+        {
+            using var client = new AmazonDynamoDBClient();
+            using var context = new DynamoDBContext(client);
+            var tableData = await client.DescribeTableAsync("Adverts");
+            return string.Compare(tableData.Table.TableStatus, "active", true) == 0;
+        }
+
         public async Task Confirm(ConfirmAdvertModel model)
         {
             using var client = new AmazonDynamoDBClient();
@@ -37,14 +45,14 @@ namespace AdvertApi.Services
                 throw new KeyNotFoundException($"A record with ID = {model.Id} was not found");
             }
 
-            if(model.Status == AdvertStatus.Active)
+            if (model.Status == AdvertStatus.Active)
             {
                 record.Status = AdvertStatus.Active;
                 await context.SaveAsync(record);
             }
             else
             {
-                await context.DeleteAsync(record);  
+                await context.DeleteAsync(record);
             }
         }
     }
